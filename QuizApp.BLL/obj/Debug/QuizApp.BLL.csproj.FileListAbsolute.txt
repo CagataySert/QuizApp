@@ -1,0 +1,6 @@
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\bin\Debug\QuizApp.BLL.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\bin\Debug\QuizApp.BLL.pdb
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\obj\Debug\QuizApp.BLL.csprojAssemblyReference.cache
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\obj\Debug\QuizApp.BLL.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\obj\Debug\QuizApp.BLL.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.BLL\obj\Debug\QuizApp.BLL.pdb

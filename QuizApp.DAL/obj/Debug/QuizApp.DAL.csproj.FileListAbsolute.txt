@@ -1,0 +1,14 @@
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\QuizApp.DAL.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\QuizApp.DAL.pdb
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\obj\Debug\QuizApp.DAL.csprojAssemblyReference.cache
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\obj\Debug\QuizApp.DAL.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\obj\Debug\QuizApp.DAL.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\obj\Debug\QuizApp.DAL.pdb
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\QuizApp.DAL.dll.config
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\EntityFramework.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\QuizzApp.Entities.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\QuizzApp.Entities.pdb
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\EntityFramework.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.DAL\obj\Debug\QuizApp.DAL.csproj.CopyComplete
