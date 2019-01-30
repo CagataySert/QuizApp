@@ -16,5 +16,6 @@ namespace QuizApp.DAL.Abstract
         List<Question> GetQuestions(Expression<Func<Question, bool>> predicate);
         bool AddOrUpdateQuestion(Question question);
         bool DeleteQuestion(int _id);
+        QuestionWithAnswers GetQuestionWithAnswersById(int _id);
     }
 }

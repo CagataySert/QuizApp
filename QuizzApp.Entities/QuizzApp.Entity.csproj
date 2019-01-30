@@ -44,6 +44,7 @@
     <Compile Include="Entities\Answer.cs" />
     <Compile Include="Entities\Category.cs" />
     <Compile Include="Entities\Question.cs" />
+    <Compile Include="Entities\QuestionWithAnswers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

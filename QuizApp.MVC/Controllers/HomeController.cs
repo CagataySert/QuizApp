@@ -13,17 +13,9 @@ namespace QuizApp.MVC.Controllers
     {
         public ActionResult Index()
         {
-            //var entity = new Category() { Id = 9, Level = "Medium", Name = "Zamazingo" };
-            //var business = new CategoryManager(EfCategoryDal.CreateAsSingleton());           
-            //var sonuc = business.GetAll();
-            //try
-            //{
-            //    business.AddOrUpdate(entity);
-            //}
-            //catch (Exception exception)
-            //{
-            //    throw exception;
-            //}           
+            var dal = EfQuestionDal.CreateAsSingleton();
+            var modelFromDb = dal.GetQuestionWithAnswersById(1);
+
             return View();
         }        
     }

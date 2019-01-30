@@ -10,5 +10,6 @@ namespace QuizApp.Interfaces.QuestionService
 {
     public interface IQuestionService:IGenericService<Question>
     {
+        QuestionWithAnswers GetQuestionWithAnswersById(int _id);
     }
 }

@@ -57,5 +57,10 @@ namespace QuizApp.BLL.Concrete.QuestionManager
         {
             throw new NotImplementedException();
         }
+
+        public QuestionWithAnswers GetQuestionWithAnswersById(int _id)
+        {
+            return _efQuestionDal.GetQuestionWithAnswersById(_id);
+        }
     }
 }
