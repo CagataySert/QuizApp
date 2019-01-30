@@ -1,4 +1,6 @@
-﻿using QuizApp.DAL.Concrete.EntityFramework;
+﻿using QuizApp.BLL.Concrete.CategoryManager;
+using QuizApp.DAL.Concrete.EntityFramework;
+using QuizzApp.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +13,17 @@ namespace QuizApp.MVC.Controllers
     {
         public ActionResult Index()
         {
-            var dal = EfCategoryDal.CreateAsSingleton();
-            var categories = dal.GetCategories();
-
+            //var entity = new Category() { Id = 9, Level = "Medium", Name = "Zamazingo" };
+            //var business = new CategoryManager(EfCategoryDal.CreateAsSingleton());           
+            //var sonuc = business.GetAll();
+            //try
+            //{
+            //    business.AddOrUpdate(entity);
+            //}
+            //catch (Exception exception)
+            //{
+            //    throw exception;
+            //}           
             return View();
         }        
     }

@@ -193,6 +193,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuizApp.BLL\QuizApp.BLL.csproj">
+      <Project>{3F98BA79-296A-45CA-AA98-FF99EE3C6E31}</Project>
+      <Name>QuizApp.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizApp.DAL\QuizApp.DAL.csproj">
       <Project>{A5A2C8A5-4D23-4964-A935-7850B7D88AE5}</Project>
       <Name>QuizApp.DAL</Name>
