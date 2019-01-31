@@ -57,6 +57,7 @@
     <Compile Include="Concrete\AnswerManager\AnswerManager.cs" />
     <Compile Include="Concrete\CategoryManager\CategoryManager.cs" />
     <Compile Include="Concrete\QuestionManager\QuestionManager.cs" />
+    <Compile Include="HelperClasses\ExceptionHandling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ValidationTool.cs" />
     <Compile Include="ValidationRules\FluentValidation\AnswerValidator.cs" />

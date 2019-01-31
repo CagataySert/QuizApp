@@ -1,4 +1,5 @@
-﻿using QuizApp.BLL.Utilities;
+﻿using QuizApp.BLL.HelperClasses;
+using QuizApp.BLL.Utilities;
 using QuizApp.BLL.ValidationRules.FluentValidation;
 using QuizApp.DAL.Abstract;
 using QuizApp.Interfaces.AnswerService;
@@ -22,15 +23,12 @@ namespace QuizApp.BLL.Concrete.AnswerManager
 
         public bool AddOrUpdate(Answer entity)
         {
-            try
+            ExceptionHandling.HandleException(() =>
             {
-                ValidationTool.Validate(new AnswerValidator(),entity);
-                return _efAnswerDal.AddOrUpdateAnswer(entity);
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+                ValidationTool.Validate(new AnswerValidator(), entity);
+                _efAnswerDal.AddOrUpdateAnswer(entity);
+            });
+            return true;
         }
 
         public bool Delete(int _id)

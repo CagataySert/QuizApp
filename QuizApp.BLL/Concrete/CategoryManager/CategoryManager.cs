@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using QuizApp.BLL.HelperClasses;
 using QuizApp.BLL.Utilities;
 using QuizApp.BLL.ValidationRules.FluentValidation;
 using QuizApp.DAL.Abstract;
@@ -19,16 +20,13 @@ namespace QuizApp.BLL.Concrete.CategoryManager
             _efCategoryDal = categoryDal;
         }
         public bool AddOrUpdate(Category entity)
-        {            
-            try
+        {
+            ExceptionHandling.HandleException(() =>
             {
                 ValidationTool.Validate(new CategoryValidator(), entity);
-                return _efCategoryDal.AddOrUpdateCategoryd(entity);
-            }
-            catch (Exception exception)
-            {
-                throw exception;
-            }
+                _efCategoryDal.AddOrUpdateCategoryd(entity);
+            });
+            return true;
         }
 
         public bool Delete(int _id)

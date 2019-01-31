@@ -1,4 +1,5 @@
-﻿using QuizApp.BLL.Concrete.CategoryManager;
+﻿using QuizApp.BLL.Concrete.AnswerManager;
+using QuizApp.BLL.Concrete.CategoryManager;
 using QuizApp.DAL.Concrete.EntityFramework;
 using QuizzApp.Entities.Entities;
 using System;
@@ -13,9 +14,12 @@ namespace QuizApp.MVC.Controllers
     {
         public ActionResult Index()
         {
-            var dal = EfQuestionDal.CreateAsSingleton();
-            var modelFromDb = dal.GetQuestionWithAnswersById(1);
+            AnswerManager bll = new AnswerManager(EfAnswerDal.CreateAsSingleton());
 
+            var result = bll.AddOrUpdate(new Answer() {  QuestionId = 2 });
+
+            //var dal = EfAnswerDal.CreateAsSingleton();
+            //var answers = dal.GetAnswers(s => s.QuestionId == 1);    
             return View();
         }        
     }
