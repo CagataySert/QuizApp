@@ -15,12 +15,18 @@ namespace QuizApp.MVC.Controllers
         public ActionResult Index()
         {
             AnswerManager bll = new AnswerManager(EfAnswerDal.CreateAsSingleton());
+            bll.GetById(s => s.QuestionId == 1);
 
-            var result = bll.AddOrUpdate(new Answer() {  QuestionId = 2 });
+            //var result = bll.GetById(20);
 
             //var dal = EfAnswerDal.CreateAsSingleton();
-            //var answers = dal.GetAnswers(s => s.QuestionId == 1);    
+            //var answers = dal.GetAnswers(s => s.QuestionId == 1);
             return View();
-        }        
+        }
+        
+        public ActionResult LoginPage()
+        {
+            return View();
+        }
     }
 }
