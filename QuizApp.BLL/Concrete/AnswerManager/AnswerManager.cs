@@ -58,7 +58,11 @@ namespace QuizApp.BLL.Concrete.AnswerManager
 
         public Answer GetById(Expression<Func<Answer, bool>> predicate)
         {
-            throw new NotImplementedException();
+            ExceptionHandling.HandleException(() =>
+            {
+                _efAnswerDal.GetAnswer(predicate);
+            });
+            return new Answer();
         }
     }
 }
