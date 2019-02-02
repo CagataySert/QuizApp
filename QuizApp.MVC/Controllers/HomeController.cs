@@ -35,7 +35,7 @@ namespace QuizApp.MVC.Controllers
         public ActionResult LoginPage()
         {
             List<Category> categories = _categoryService.GetAll();
-            return View();
+            return View(categories);
         }
     }
 }

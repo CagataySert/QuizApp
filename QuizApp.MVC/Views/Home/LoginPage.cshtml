@@ -1,4 +1,4 @@
-﻿
+﻿@model List<QuizzApp.Entities.Entities.Category>
 @{
     ViewBag.Title = "LoginPage";
 }
@@ -6,10 +6,11 @@
     body {
         background-color: #4679BD;
     }
+
     .category-box {
         position: relative;
         width: 100%;
-        overflow: hidden;        
+        overflow: hidden;
         content: "";
         display: block;
         padding-top: 100%;
@@ -26,49 +27,37 @@
         text-align: center;
     }
 
-    .category-bg-yellow {
+    .category-bg-color-Medium {
         background: #e6e600;
     }
-    .category-bg-red {
+
+    .category-bg-color-Hard {
         background: #ff0000;
     }
-    .category-bg-green {
+
+    .category-bg-color-Easy {
         background: #33cc33;
     }
-
 </style>
 <div class="container" style="margin-top:100px;">
     <div class="row">
-        <div class="col-md-4">
-            <div class='category-box category-bg-red'>
-                <div class='category-content'>
-                    <h3>Breaking Bad</h3>
-                    <h5>Number of Questions: 5</h5>
-                    <h5>Hardness Level: Hard</h5>
-                    <button class="btn btn-default form-control" style="max-width:50%;" type="button" onclick="">Let's try it!</button>
+        @foreach (var category in Model)
+        {
+            <div class="col-md-4">
+                <div class='category-box category-bg-color-@category.Level'>
+                    <div class='category-content'>
+                        <h3>@category.Name</h3>
+                        <h5>Hardness Level: @category.Level</h5>
+                        <button class="btn btn-default form-control" style="max-width:50%;" type="button" onclick="startQuiz(@category.Id)">Let's try it!</button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4">
-            <div class='category-box category-bg-yellow'>
-                <div class='category-content'>
-                    <h3>Breaking Bad</h3>
-                    <h5>Number of Questions: 5</h5>
-                    <h5>Hardness Level: Medium</h5>
-                    <button class="btn btn-default form-control" style="max-width:50%;" type="button" onclick="">Let's try it!</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class='category-box category-bg-green'>
-                <div class='category-content'>
-                    <h3>Furkan Şahin'in Favori Rengi</h3>
-                    <h5>Number of Questions: 5</h5>
-                    <h5>Hardness Level: Easy</h5>
-                    <button class="btn btn-default form-control" style="max-width:50%;" type="button" onclick="">Let's try it!</button>
-                </div>
-            </div>
-        </div>
+        }
     </div>
 </div>
 
+<script>
+    function startQuiz(categoryId) {
+        console.log(categoryId);
+    }
+</script>
