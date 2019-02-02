@@ -100,3 +100,5 @@ C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.csproj.Core
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.csproj.CopyComplete
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.pdb
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.xml

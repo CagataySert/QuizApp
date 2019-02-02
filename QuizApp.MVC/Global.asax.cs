@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizApp.MVC.NinjectController;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,9 +14,13 @@ namespace QuizApp.MVC
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
         }
     }
 }

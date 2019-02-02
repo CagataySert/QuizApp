@@ -52,6 +52,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -136,6 +139,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="NinjectController\NinjectControllerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +203,10 @@
     <ProjectReference Include="..\QuizApp.DAL\QuizApp.DAL.csproj">
       <Project>{A5A2C8A5-4D23-4964-A935-7850B7D88AE5}</Project>
       <Name>QuizApp.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuizApp.Interfaces\QuizApp.Interfaces.csproj">
+      <Project>{A5956860-FA6C-4ABC-B49C-AC133C495824}</Project>
+      <Name>QuizApp.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuizzApp.Entities\QuizzApp.Entity.csproj">
       <Project>{7344066A-36C6-4E41-9471-3AFC150E8D44}</Project>
