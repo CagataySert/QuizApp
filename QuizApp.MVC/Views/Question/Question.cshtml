@@ -6,12 +6,14 @@
 <style>
     body {
         background-color: #4679BD;
-        color:white;
+        color: white;
     }
+
     .layout {
-        padding: 30px;        
-        margin-top:150px;
+        padding: 30px;
+        margin-top: 150px;
     }
+
     .question-box {
         background-color: #EE693F;
         padding-top: 20px;
@@ -31,11 +33,13 @@
     .choosen-answer {
         background-color: cornflowerblue !important;
     }
+
     .answer {
         color: white;
         margin-right: 4px;
     }
-    a:focus{
+
+    a:focus {
         color: white;
         outline: none;
         text-decoration: none;
@@ -47,11 +51,11 @@
     {
         if (i == 0)
         {
-            <div class="row" id="mainRow">
+            <div class="row" id="mainRow@(i)">
                 <div class="col-md-8 col-md-offset-2 layout">
                     <div class="row">
                         <div class="col-md-9 col-md-offset-1 question-box">
-                            <h4 id="questionName">@Model[i].QuestionName</h4>
+                            <h4 id="questionName">@Convert.ToInt32(i + 1))- @Model[i].QuestionName</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -72,16 +76,21 @@
                             <h5 style="display:inline-block" id="answerNameD">@Model[i].AnswerNames[3]</h5>
                         </div>
                     </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-md-2 col-md-offset-8">
+                            <button type="button" onclick="nextQuestion('@(i)');" style="float:right;min-width:100px;" class="btn btn-warning">Next</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         }
         else
         {
-            <div class="row" id="mainRow" hidden>
+            <div class="row" id="mainRow@(i)" hidden>
                 <div class="col-md-8 col-md-offset-2 layout">
                     <div class="row">
                         <div class="col-md-9 col-md-offset-1 question-box">
-                            <h4 id="questionName">@Model[i].QuestionName</h4>
+                            <h4 id="questionName">@Convert.ToInt32(i + 1))- @Model[i].QuestionName</h4>
                         </div>
                     </div>
                     <div class="row">
@@ -89,32 +98,38 @@
                             <a href="#" class="answer" onclick="chooseAnswer(@Model[i].AnswerIds[0]);">A) - </a>
                             <h5 style="display:inline-block" id="answerNameA">@Model[i].AnswerNames[0]</h5>
                         </div>
-                        <div class="col-md-4 col-md-offset-1 answer-box" id="answer1" data-is-choosen="false">
+                        <div class="col-md-4 col-md-offset-1 answer-box" id="answerId@(Model[i].AnswerIds[1])"  data-is-choosen="false">
                             <a href="#" class="answer" onclick="chooseAnswer(@Model[i].AnswerIds[1]);">B) - </a>
                             <h5 style="display:inline-block" id="answerNameB">@Model[i].AnswerNames[1]</h5>
                         </div>
-                        <div class="col-md-4 col-md-offset-1 answer-box" id="answer2" data-is-choosen="false">
+                        <div class="col-md-4 col-md-offset-1 answer-box" id="answerId@(Model[i].AnswerIds[2])"  data-is-choosen="false">
                             <a href="#" class="answer" onclick="chooseAnswer(@Model[i].AnswerIds[2]);">C) - </a>
                             <h5 style="display:inline-block" id="answerNameC">@Model[i].AnswerNames[2]</h5>
                         </div>
-                        <div class="col-md-4 col-md-offset-1 answer-box" id="answer3" data-is-choosen="false">
+                        <div class="col-md-4 col-md-offset-1 answer-box" id="answerId@(Model[i].AnswerIds[3])"  data-is-choosen="false">
                             <a href="#" class="answer" onclick="chooseAnswer(@Model[i].AnswerIds[3]);">D) - </a>
                             <h5 style="display:inline-block" id="answerNameD">@Model[i].AnswerNames[3]</h5>
                         </div>
                     </div>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col-md-2 col-md-offset-8">
+                            <button type="button" onclick="nextQuestion('@(i)');" style="float:right;min-width:100px;" class="btn btn-warning">Next</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         }
-
     }
 </div>
 
 <script>
+    let questionCount = @Model.Count ;
     let oldChoosenAnswerId;
+    choosenAnswerList = [];
+
     function chooseAnswer(answerId) {
         //firstly remove choosen-answer class from old choosen answer
-        if (oldChoosenAnswerId!= null && parseInt(oldChoosenAnswerId.substring(8)) == answerId) {
+        if (oldChoosenAnswerId != null && parseInt(oldChoosenAnswerId.substring(8)) == answerId) {
             var unSelectedElement = document.getElementById(oldChoosenAnswerId);
             unSelectedElement.classList.remove("choosen-answer");
             unSelectedElement.dataset.isChoosen = "false";
@@ -124,18 +139,31 @@
         var oldAnswer = document.getElementById(oldChoosenAnswerId);
         oldAnswer == null ? oldAnswer : oldAnswer.classList.remove("choosen-answer");
         oldAnswer == null ? oldAnswer : oldAnswer.dataset.isChoosen = "false";
-      
+
         let choosenAnswer = document.getElementById("answerId" + answerId);
         let isChoosen = choosenAnswer.dataset.isChoosen;
-        if (isChoosen == "false") {            
+        if (isChoosen == "false") {
             choosenAnswer.classList.add("choosen-answer");
             choosenAnswer.dataset.isChoosen = "true";
             oldChoosenAnswerId = "answerId" + answerId;
         }
-        else {            
+        else {
             choosenAnswer.classList.remove("choosen-answer");
             choosenAnswer.dataset.isChoosen = "false";
             oldChoosenAnswerId = null;
-        }        
+        }
+    }
+
+    function nextQuestion(idOrder) {
+        
+        let oldMainRow = document.getElementById("mainRow" + idOrder);
+        oldMainRow.setAttribute("hidden", "true");
+        let newMainRow = document.getElementById("mainRow" + (parseInt(idOrder) + 1));
+        newMainRow == null ? newMainRow : newMainRow.removeAttribute("hidden");
+
+        let choosenAnswerElement = document.querySelectorAll('[data-is-choosen="true"]');
+        choosenAnswerId = choosenAnswerElement[0].id;
+        choosenAnswerList.push(choosenAnswerId.substring(8));
+        choosenAnswerElement[0].dataset.isChoosen = "false";
     }
 </script>
