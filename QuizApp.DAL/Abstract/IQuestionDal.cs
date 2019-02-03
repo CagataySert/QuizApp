@@ -17,5 +17,6 @@ namespace QuizApp.DAL.Abstract
         bool AddOrUpdateQuestion(Question question);
         bool DeleteQuestion(int _id);
         QuestionWithAnswers GetQuestionWithAnswersById(int _id);
+        List<QuestionWithAnswers> GetAllQuestionWithAnswersByCategoryId(int _categoryId);
     }
 }

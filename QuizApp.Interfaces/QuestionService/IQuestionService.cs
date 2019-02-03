@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace QuizApp.Interfaces.QuestionService
 {
-    public interface IQuestionService:IGenericService<Question>
+    public interface IQuestionService : IGenericService<Question>
     {
         QuestionWithAnswers GetQuestionWithAnswersById(int _id);
+        List<QuestionWithAnswers> GetAllQuestionWithAnswersByCategoryId(int _categoryId);
     }
 }

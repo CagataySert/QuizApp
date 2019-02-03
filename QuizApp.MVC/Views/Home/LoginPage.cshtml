@@ -3,7 +3,7 @@
     ViewBag.Title = "LoginPage";
 }
 <style>
-    body {
+    body {        
         background-color: #4679BD;
     }
 
@@ -23,8 +23,8 @@
         left: 0;
         bottom: 0;
         right: 0;
-        color: white;
         text-align: center;
+        font-family: sans-serif;
     }
 
     .category-bg-color-Medium {
@@ -43,21 +43,16 @@
     <div class="row">
         @foreach (var category in Model)
         {
-            <div class="col-md-4">
-                <div class='category-box category-bg-color-@category.Level'>
+            <div class="col-md-4" style="margin-top:10px;">
+                <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
                     <div class='category-content'>
-                        <h3>@category.Name</h3>
-                        <h5>Hardness Level: @category.Level</h5>
-                        <button class="btn btn-default form-control" style="max-width:50%;" type="button" onclick="startQuiz(@category.Id)">Let's try it!</button>
+                        <h2>@category.Name</h2>
+                        <h4>Hardness Level: @category.Level</h4>
+                        <br />
+                        @Html.ActionLink("Let's try it!","Question","Question",new { categoryId = category.Id},new { @class="btn btn-default"})
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
-
-<script>
-    function startQuiz(categoryId) {
-        console.log(categoryId);
-    }
-</script>

@@ -103,5 +103,20 @@ namespace QuizApp.DAL.Concrete.EntityFramework
             //        }
             //    ).Where(s => s.Id == _id).ToList();
         }
+
+        public List<QuestionWithAnswers> GetAllQuestionWithAnswersByCategoryId(int _categoryId)
+        {
+            var dbModel = context.Questions
+                .Where(question => question.CategoryId == _categoryId)
+                .Select(question => new QuestionWithAnswers
+                {
+                    QuestionId = question.Id,
+                    QuestionName = question.Name,
+                    AnswerIds = question.Answers.Select(a => a.Id).ToList(),
+                    AnswerNames = question.Answers.Select(a=> a.Name).ToList()
+                }).ToList();
+
+            return dbModel;
+        }
     }
 }

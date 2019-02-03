@@ -46,6 +46,11 @@ namespace QuizApp.BLL.Concrete.QuestionManager
             throw new NotImplementedException();
         }
 
+        public List<QuestionWithAnswers> GetAllQuestionWithAnswersByCategoryId(int _categoryId)
+        {
+            return _efQuestionDal.GetAllQuestionWithAnswersByCategoryId(_categoryId);
+        }
+
         public Question GetById(int _id)
         {
             return _efQuestionDal.GetQuestion(_id);
