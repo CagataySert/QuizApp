@@ -12,14 +12,7 @@ using System.Web.Mvc;
 namespace QuizApp.MVC.Controllers
 {
     public class HomeController : Controller
-    {
-        ICategoryService _categoryService;
-
-        public HomeController(ICategoryService categoryService)
-        {
-            _categoryService = categoryService;
-        }
-
+    {        
         public ActionResult Index()
         {
             //AnswerManager bll = new AnswerManager(EfAnswerDal.CreateAsSingleton());
@@ -34,8 +27,24 @@ namespace QuizApp.MVC.Controllers
 
         public ActionResult LoginPage()
         {
-            List<Category> categories = _categoryService.GetAll();
-            return View(categories);
+            return View();
+        }
+
+        public bool SaveLoginPage(string email, string password)
+        {
+            if (email == "admin@gmail.com" && password=="123123")
+            {
+                Session["CheckUserRole"] = "Admin";
+                return true;
+            }
+            return false;
+
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return View("LoginPage");
         }
     }
 }

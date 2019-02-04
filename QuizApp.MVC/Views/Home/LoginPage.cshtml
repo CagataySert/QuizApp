@@ -1,58 +1,85 @@
-﻿@model List<QuizzApp.Entities.Entities.Category>
-@{
+﻿@{
     ViewBag.Title = "LoginPage";
 }
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+@*<style>
+        .login-box {
+            position: relative;
+            display: block;
+            background-color: black;
+            margin-top: 100px;
+            min-height: 400px;
+            text-align: center;
+            color: white;
+            opacity: 0.25;
+        }
+
+        .form-elements {
+            display: unset !important;
+            max-width: 220px;
+        }
+    </style>*@
 <style>
-    body {        
-        background-color: #4679BD;
+    * {
+        color: #fff;
     }
 
-    .category-box {
-        position: relative;
+    body {
+        background-image: url('../../Content/loginPage.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
-        overflow: hidden;
-        content: "";
-        display: block;
-        padding-top: 100%;
-        border-radius: 40px;
+        height: 100vh;
     }
 
-    .category-content {
-        position: absolute;
-        top: 30%;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        text-align: center;
-        font-family: sans-serif;
-    }
-
-    .category-bg-color-Medium {
-        background: #e6e600;
-    }
-
-    .category-bg-color-Hard {
-        background: #ff0000;
-    }
-
-    .category-bg-color-Easy {
-        background: #33cc33;
+    .form-container {
+        border: 1px solid #fff;
+        padding: 50px 60px;
+        margin-top: 20vh;
+        -webkit-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
+        box-shadow: -1px 4px 26px 11px rgba(0,0,0,0.75);
     }
 </style>
-<div class="container" style="margin-top:100px;">
+<div class="container-fluid bg">
     <div class="row">
-        @foreach (var category in Model)
-        {
-            <div class="col-md-4" style="margin-top:10px;">
-                <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
-                    <div class='category-content'>
-                        <h2>@category.Name</h2>
-                        <h4>Hardness Level: @category.Level</h4>
-                        <br />
-                        @Html.ActionLink("Let's try it!","Question","Question",new { categoryId = category.Id},new { @class="btn btn-default"})
-                    </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-md-4 col-sm-4 col-xs-12">
+            <form class="form-container">
+                <h1>Quiz App</h1>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" />
                 </div>
-            </div>
-        }
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
+                </div>
+                <button type="button" class="btn btn-success btn-block" onclick="SaveLoginForm();">Login</button>
+                <a href="@Url.Action("GetAllCategories","Category")" style="color:white;float:right;margin-top:8px;">Start without membership</a>
+            </form>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-12"></div>
     </div>
 </div>
+
+<script>
+    function SaveLoginForm() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        $.ajax({
+            url: "@Url.Action("SaveLoginPage", "Home")",
+            type: "POST",
+            data: { "email": email, "password": password },
+            success: function (response) {
+                if (response) {
+                    window.location.href = "@Url.Action("GetAllCategories","Category")";
+                }
+                else {
+                    alert("hata");
+                }
+            }
+        });
+    }
+</script>

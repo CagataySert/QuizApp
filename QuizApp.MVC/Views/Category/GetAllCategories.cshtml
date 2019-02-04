@@ -1,0 +1,91 @@
+﻿@model List<QuizzApp.Entities.Entities.Category>
+@{
+    /**/
+
+    ViewBag.Title = "GetAllCategories";
+}
+<style>
+    body {
+        background-color: #4679BD;
+    }
+
+    .category-box {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        content: "";
+        display: block;
+        padding-top: 100%;
+        border-radius: 40px;
+    }
+
+    .category-content {
+        position: absolute;
+        top: 30%;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        font-family: sans-serif;
+    }
+
+    .category-bg-color-Medium {
+        background: #e6e600;
+    }
+
+    .category-bg-color-Hard {
+        background: #ff0000;
+    }
+
+    .category-bg-color-Easy {
+        background: #33cc33;
+    }
+</style>
+@if (Session["CheckUserRole"] != null)
+{
+    if (Session["CheckUserRole"] == "Admin")
+    {
+        <h1>Admin Panel</h1>
+        <div class="container" style="margin-top:100px;">
+            <div class="row">
+                @foreach (var category in Model)
+                {
+                    <div class="col-md-4" style="margin-top:10px;">
+                        <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
+                            <div class='category-content'>
+                                <h2>@category.Name</h2>
+                                <h4>Hardness Level: @category.Level</h4>
+                                <br />
+                                @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container" style="margin-top:100px;">
+            <div class="row">
+                @foreach (var category in Model)
+                {
+                    <div class="col-md-4" style="margin-top:10px;">
+                        <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
+                            <div class='category-content'>
+                                <h2>@category.Name</h2>
+                                <h4>Hardness Level: @category.Level</h4>
+                                <br />
+                                @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h1>Hatalı Bir Giriş Yaptınız..</h1>
+}

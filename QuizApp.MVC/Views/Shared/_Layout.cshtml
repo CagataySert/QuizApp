@@ -21,9 +21,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Giriş Sayfası", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Hakkında", "About", "Home")</li>
-                    <li>@Html.ActionLink("İletişim", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Categories Page", "GetAllCategories", "Category")</li>
+                    <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -32,7 +31,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - ASP.NET Uygulamam</p>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Quiz App Project By Cagatay Sert</p>
         </footer>
     </div>
 
