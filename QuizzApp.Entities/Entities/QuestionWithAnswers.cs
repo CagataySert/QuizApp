@@ -12,5 +12,6 @@ namespace QuizzApp.Entities.Entities
         public List<int> AnswerIds { get; set; }
         public List<string> AnswerNames { get; set; }
         public string QuestionName { get; set; }
+        public List<bool> AnswerType { get; set; }
     }
 }

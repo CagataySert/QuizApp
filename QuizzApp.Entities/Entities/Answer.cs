@@ -10,6 +10,7 @@ namespace QuizzApp.Entities.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsTrue { get; set; }
 
         public int QuestionId { get; set; }
     }
