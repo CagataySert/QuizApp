@@ -41,51 +41,46 @@
         background: #33cc33;
     }
 </style>
-@if (Session["CheckUserRole"] != null)
+
+@if (Session["CheckUserRole"] == "Admin")
 {
-    if (Session["CheckUserRole"] == "Admin")
-    {
-        <h1>Admin Panel</h1>
-        <div class="container" style="margin-top:100px;">
-            <div class="row">
-                @foreach (var category in Model)
-                {
-                    <div class="col-md-4" style="margin-top:10px;">
-                        <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
-                            <div class='category-content'>
-                                <h2>@category.Name</h2>
-                                <h4>Hardness Level: @category.Level</h4>
-                                <br />
-                                @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
-                            </div>
+    <h1>Admin Panel</h1>
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            @foreach (var category in Model)
+            {
+                <div class="col-md-4" style="margin-top:10px;">
+                    <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
+                        <div class='category-content'>
+                            <h2>@category.Name</h2>
+                            <h4>Hardness Level: @category.Level</h4>
+                            <br />
+                            @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
-    }
-    else
-    {
-        <div class="container" style="margin-top:100px;">
-            <div class="row">
-                @foreach (var category in Model)
-                {
-                    <div class="col-md-4" style="margin-top:10px;">
-                        <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
-                            <div class='category-content'>
-                                <h2>@category.Name</h2>
-                                <h4>Hardness Level: @category.Level</h4>
-                                <br />
-                                @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    }
+    </div>
 }
 else
 {
-    <h1>Hatalı Bir Giriş Yaptınız..</h1>
+    <div class="container" style="margin-top:100px;">
+        <div class="row">
+            @foreach (var category in Model)
+            {
+                <div class="col-md-4" style="margin-top:10px;">
+                    <div class='category-box category-bg-color-@category.Level' style="color:black !important;">
+                        <div class='category-content'>
+                            <h2>@category.Name</h2>
+                            <h4>Hardness Level: @category.Level</h4>
+                            <br />
+                            @Html.ActionLink("Let's try it!", "Question", "Question", new { categoryId = category.Id }, new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 }
+

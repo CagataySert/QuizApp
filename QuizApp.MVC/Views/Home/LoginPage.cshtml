@@ -1,24 +1,8 @@
 ﻿@{
     ViewBag.Title = "LoginPage";
 }
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-@*<style>
-        .login-box {
-            position: relative;
-            display: block;
-            background-color: black;
-            margin-top: 100px;
-            min-height: 400px;
-            text-align: center;
-            color: white;
-            opacity: 0.25;
-        }
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-        .form-elements {
-            display: unset !important;
-            max-width: 220px;
-        }
-    </style>*@
 <style>
     * {
         color: #fff;
@@ -45,7 +29,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-12"></div>
         <div class="col-md-4 col-sm-4 col-xs-12">
-            <form class="form-container">
+            <form class="form-container" id="loginForm">
                 <h1>Quiz App</h1>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -53,7 +37,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="password" class="form-control" placeholder="Password" />
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" onclick="showPassword();" id="showPasswordCheckBox" />
+                    <label class="form-check-label" for="showPasswordCheckBox">Show Password</label>
                 </div>
                 <button type="button" class="btn btn-success btn-block" onclick="SaveLoginForm();">Login</button>
                 <a href="@Url.Action("GetAllCategories","Category")" style="color:white;float:right;margin-top:8px;">Start without membership</a>
@@ -64,22 +52,65 @@
 </div>
 
 <script>
-    function SaveLoginForm() {
-        let email = document.getElementById("email").value;
-        let password = document.getElementById("password").value;
+    function showPassword() {
+        var password = document.getElementById("password");
+        password.type === "password" ? password.type = "text" : password.type = "password";
+    }
 
-        $.ajax({
-            url: "@Url.Action("SaveLoginPage", "Home")",
-            type: "POST",
-            data: { "email": email, "password": password },
-            success: function (response) {
-                if (response) {
-                    window.location.href = "@Url.Action("GetAllCategories","Category")";
-                }
-                else {
-                    alert("hata");
-                }
+    $("#loginForm").validate({
+        errorElement: "errorElement",
+        rules: {
+            email: {
+                required: true,
+                email: true,
+                maxlength: 100
+            },
+            password: {
+                required: true,
+                rangelength: [6,30]
             }
-        });
+        }
+    });
+
+    //----------------------------------For Turkish Members-------------------------------
+    //$.validator.messages.required = 'Bu alanı boş bırakamazsınız.';
+    //$.validator.messages.email = "Lütfen geçerli bir mail adresi giriniz.";
+    //$.validator.messages.rangelength = "Lütfen {0} - {1} aralığında karakter giriniz."
+    //$.validator.messages.maxlength = "{0} karakterden daha fazlasını kullanmayınız."
+    //-------------------------------------------------------------------------------------
+
+    function SaveLoginForm() {
+        var isFormFilled = $("#loginForm").valid();
+        if (isFormFilled) {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            $.ajax({
+                url: "@Url.Action("SaveLoginPage", "Home")",
+                type: "POST",
+                data: { "email": email, "password": password },
+                success: function (response) {
+                    if (response == "True") {
+                        window.location.href = "@Url.Action("GetAllCategories","Category")";
+                    }
+                    else {
+                        swal({
+                            title: 'Oops...',
+                            text: 'Please check your information..',
+                            icon: 'error',
+                            button: 'Try again',
+                        });
+                    }
+                }
+            });
+        }
+        else {
+            swal({
+                title: 'Oops...',
+                text: 'Please fill required fields..',
+                icon: 'error',
+                button: 'Try again',
+            });
+        }
     }
 </script>
