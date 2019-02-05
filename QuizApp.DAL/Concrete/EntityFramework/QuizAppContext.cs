@@ -23,18 +23,18 @@ namespace QuizApp.DAL.Concrete.EntityFramework
             protected override void Seed(QuizAppContext context)
             {
                 List<Answer> answers = new List<Answer>();
-                answers.Add(new Answer() { Id = 1, Name = "Deenem Cevap 1", QuestionId = 1 });
-                answers.Add(new Answer() { Id = 2, Name = "Deneme Cevap 2", QuestionId = 1 });
-                answers.Add(new Answer() { Id = 3, Name = "Deneme Cevap 3", QuestionId = 1 });
-                answers.Add(new Answer() { Id = 4, Name = "Deneme Cevap 4", QuestionId = 1 });
-                answers.Add(new Answer() { Id = 5, Name = "Deneme Cevap 5", QuestionId = 2 });            
-                answers.Add(new Answer() { Id = 6, Name = "Deneme Cevap 6", QuestionId = 2 });
-                answers.Add(new Answer() { Id = 7, Name = "Deneme Cevap 7", QuestionId = 2 });
-                answers.Add(new Answer() { Id = 8, Name = "Deneme Cevap 8", QuestionId = 2 });
-                answers.Add(new Answer() { Id = 9, Name = "Deneme Cevap 9", QuestionId = 3 });
-                answers.Add(new Answer() { Id = 10, Name = "Deneme Cevap 10", QuestionId = 3 });
-                answers.Add(new Answer() { Id = 11, Name = "Deneme Cevap 11", QuestionId = 3 });
-                answers.Add(new Answer() { Id = 12, Name = "Deneme Cevap 11", QuestionId = 3 });
+                answers.Add(new Answer() { Id = 1, Name = "Deenem Cevap 1", QuestionId = 1 ,IsTrue=true});
+                answers.Add(new Answer() { Id = 2, Name = "Deneme Cevap 2", QuestionId = 1, IsTrue = false });
+                answers.Add(new Answer() { Id = 3, Name = "Deneme Cevap 3", QuestionId = 1, IsTrue = false });
+                answers.Add(new Answer() { Id = 4, Name = "Deneme Cevap 4", QuestionId = 1, IsTrue = false });
+                answers.Add(new Answer() { Id = 5, Name = "Deneme Cevap 5", QuestionId = 2, IsTrue = true });            
+                answers.Add(new Answer() { Id = 6, Name = "Deneme Cevap 6", QuestionId = 2, IsTrue = false });
+                answers.Add(new Answer() { Id = 7, Name = "Deneme Cevap 7", QuestionId = 2, IsTrue = false });
+                answers.Add(new Answer() { Id = 8, Name = "Deneme Cevap 8", QuestionId = 2, IsTrue = false });
+                answers.Add(new Answer() { Id = 9, Name = "Deneme Cevap 9", QuestionId = 3, IsTrue = true });
+                answers.Add(new Answer() { Id = 10, Name = "Deneme Cevap 10", QuestionId = 3, IsTrue = false });
+                answers.Add(new Answer() { Id = 11, Name = "Deneme Cevap 11", QuestionId = 3, IsTrue = false });
+                answers.Add(new Answer() { Id = 12, Name = "Deneme Cevap 11", QuestionId = 3, IsTrue = false });
 
                 foreach (Answer answer in answers)
                 {

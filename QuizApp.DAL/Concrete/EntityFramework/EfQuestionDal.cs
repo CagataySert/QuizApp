@@ -113,7 +113,8 @@ namespace QuizApp.DAL.Concrete.EntityFramework
                     QuestionId = question.Id,
                     QuestionName = question.Name,
                     AnswerIds = question.Answers.Select(a => a.Id).ToList(),
-                    AnswerNames = question.Answers.Select(a=> a.Name).ToList()
+                    AnswerNames = question.Answers.Select(a => a.Name).ToList(),
+                    AnswerType = question.Answers.Select(a => a.IsTrue).ToList()
                 }).ToList();
 
             return dbModel;
