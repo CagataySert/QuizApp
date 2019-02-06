@@ -154,33 +154,7 @@
     </div>
 </div>
 
-<script>
-    function createResultHtmlBlock() {
-        for (var i = 0; i < choosenAnswerList.length; i++) {
-            createTrueOrFalseResultBlock(choosenAnswerList[i].choosenAnswerId, choosenAnswerList[i].choosenAnswerType);
-        }
-    }
-
-    function createTrueOrFalseResultBlock(questionId, questionType) {
-        console.log(questionId, questionType);
-        let questionDiv = document.createElement("div");
-        questionDiv.classList.add("col-md-1", "col-sm-1", "col-xs-3", "question-circle-div");
-        questionDiv.id = "result" + questionId;
-
-        let questionSpan = document.createElement("span");
-        questionType == "True" ? questionSpan.classList.add("question-circle-true") : questionSpan.classList.add("question-circle-false");
-        questionSpan.innerText = questionCircleNumber;
-
-        questionDiv.appendChild(questionSpan);
-        document.getElementById("resultRow").appendChild(questionDiv);
-        questionCircleNumber += 1;
-    }
-
-
-
-
-
-
+<script>    
     let totalQuestionNumber = @Model.Count ;
     let questionCounter = 0;
     let oldChoosenAnswerId;
@@ -256,5 +230,24 @@
         choosenAnswerList.push({ "choosenAnswerId": choosenAnswerId, "choosenAnswerType": choosenAnswerType });
     }
 
-    
+    function createResultHtmlBlock() {
+        for (var i = 0; i < choosenAnswerList.length; i++) {
+            createTrueOrFalseResultBlock(choosenAnswerList[i].choosenAnswerId, choosenAnswerList[i].choosenAnswerType);
+        }
+    }
+
+    function createTrueOrFalseResultBlock(answerId, questionType) {
+        let questionDiv = document.createElement("div");
+        questionDiv.classList.add("col-md-1", "col-sm-1", "col-xs-3", "question-circle-div");
+        questionDiv.id = "result" + answerId;
+
+        let questionLink = document.createElement("a");
+        questionLink.href = '@Url.Action("GetQuestionById","Question")?choosenAnswerId='+answerId;
+        questionType == "True" ? questionLink.classList.add("question-circle-true") : questionLink.classList.add("question-circle-false");
+        questionLink.innerText = questionCircleNumber;
+
+        questionDiv.appendChild(questionLink);
+        document.getElementById("resultRow").appendChild(questionDiv);
+        questionCircleNumber += 1;
+    }
 </script>
