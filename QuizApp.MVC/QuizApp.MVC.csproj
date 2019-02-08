@@ -182,12 +182,10 @@
     <Content Include="Views\Home\LoginPage.cshtml" />
     <Content Include="Views\Question\Question.cshtml" />
     <Content Include="Views\Category\GetAllCategories.cshtml" />
-    <Content Include="Views\Answer\GetAnswersAndQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\GetAnswer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -69,6 +69,10 @@
         padding: 20px;
         background-color: #ff3300;
     }
+
+    .true-answer {
+        background-color: #4CAF50 !important;
+    }
 </style>
 
 <div class="container">
@@ -231,23 +235,48 @@
     }
 
     function createResultHtmlBlock() {
+        changeBgOfTrueAnswers();
+        makeNextButtonsDisable();
         for (var i = 0; i < choosenAnswerList.length; i++) {
             createTrueOrFalseResultBlock(choosenAnswerList[i].choosenAnswerId, choosenAnswerList[i].choosenAnswerType);
         }
     }
 
+    function changeBgOfTrueAnswers() {
+        let trueAnswers = document.querySelectorAll('[data-answer-type="True"]');
+        for (var i = 0; i < trueAnswers.length; i++) {
+            trueAnswers[i].classList.add("true-answer");
+        }
+    }
+
+    function makeNextButtonsDisable() {
+        var buttons = document.getElementsByTagName("button");
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].setAttribute("disabled", true);
+        }
+    }
+
     function createTrueOrFalseResultBlock(answerId, questionType) {
+        let questionNumber = questionCircleNumber - 1; 
         let questionDiv = document.createElement("div");
         questionDiv.classList.add("col-md-1", "col-sm-1", "col-xs-3", "question-circle-div");
         questionDiv.id = "result" + answerId;
 
         let questionLink = document.createElement("a");
-        questionLink.href = '@Url.Action("GetQuestionById","Question")?choosenAnswerId='+answerId;
+        questionLink.href = "#";
+        questionLink.addEventListener("click", function () { showQuestionWithOldAnswer(answerId,questionNumber); });
         questionType == "True" ? questionLink.classList.add("question-circle-true") : questionLink.classList.add("question-circle-false");
         questionLink.innerText = questionCircleNumber;
 
         questionDiv.appendChild(questionLink);
         document.getElementById("resultRow").appendChild(questionDiv);
         questionCircleNumber += 1;
+    }
+
+    function showQuestionWithOldAnswer(answerId,questionNumber) {
+        let questionElement = document.getElementById("mainRow" + questionNumber);
+        questionElement.removeAttribute("hidden");
+        let usersAnswerElement = document.getElementById("answerId" + answerId);
+        usersAnswerElement.classList.add("choosen-answer");
     }
 </script>

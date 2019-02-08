@@ -76,6 +76,7 @@ namespace QuizApp.DAL.Concrete.EntityFramework
                     {
                         answerNames = question.Answers.Select(a => a.Name).ToList(),
                         answerIds = question.Answers.Select(a => a.Id).ToList(),
+                        answerTypes = question.Answers.Select(a => a.IsTrue).ToList(),
                         questionId = question.Id,
                         questionName = question.Name
                     }
@@ -84,6 +85,7 @@ namespace QuizApp.DAL.Concrete.EntityFramework
             QuestionWithAnswers questionWithAnswers = new QuestionWithAnswers();
             questionWithAnswers.AnswerNames = dbModel.answerNames;
             questionWithAnswers.AnswerIds = dbModel.answerIds;
+            questionWithAnswers.AnswerType = dbModel.answerTypes;
             questionWithAnswers.QuestionId = dbModel.questionId;
             questionWithAnswers.QuestionName = dbModel.questionName;
 

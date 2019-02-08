@@ -19,12 +19,11 @@ namespace QuizApp.MVC.Controllers
             _questionService = questionService;
         }
 
-        // GET: Answer
-        public ActionResult GetAnswersAndQuestion(int choosenAnswerId)
+        public JsonResult GetAnswersAndQuestion(int choosenAnswerId)
         {
-            Answer answer = _answerService.GetById(s => s.Id == choosenAnswerId);
+            Answer answer = _answerService.GetById(choosenAnswerId);
             QuestionWithAnswers questionWithAnswers = _questionService.GetQuestionWithAnswersById(answer.QuestionId);
-            return View(questionWithAnswers);
+            return Json(questionWithAnswers,JsonRequestBehavior.AllowGet);
         }
     }
 }
