@@ -54,8 +54,10 @@ C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Microsoft.AspNet.TelemetryCor
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Newtonsoft.Json.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.BLL.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.DAL.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.Interfaces.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizzApp.Entities.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Diagnostics.DiagnosticSource.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.Helpers.dll
@@ -67,13 +69,14 @@ C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.WebPages.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.WebPages.Razor.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\WebGrease.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\FluentValidation.dll
-C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.Interfaces.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.BLL.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.DAL.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.DAL.dll.config
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.Interfaces.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizzApp.Entities.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\EntityFramework.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.Helpers.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.Mvc.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Web.Optimization.xml
@@ -87,7 +90,6 @@ C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\System.Diagnostics.Diagnostic
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\FluentValidation.xml
-C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\QuizApp.Interfaces.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\tr\System.Web.Helpers.resources.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\tr\System.Web.Mvc.resources.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\tr\System.Web.Optimization.resources.dll
@@ -100,5 +102,3 @@ C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.csproj.Core
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.csproj.CopyComplete
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.MVC\obj\Debug\QuizApp.MVC.pdb
-C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.dll
-C:\Users\user\source\repos\QuizApp\QuizApp.MVC\bin\Ninject.xml

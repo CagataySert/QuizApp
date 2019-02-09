@@ -16,11 +16,11 @@ namespace QuizApp.BLL.ValidationRules.FluentValidation
             RuleFor(c => c.Level).NotEmpty();
             RuleFor(c => c.Name).NotEmpty();
 
-            RuleFor(c => c.Name).Must(StartsWithA).WithMessage("A ile Başlamalı");
+            //RuleFor(c => c.Name).Must(StartsWithA).WithMessage("A ile Başlamalı");
         }
-        private bool StartsWithA(string arg)
-        {
-            return arg.StartsWith("A");
-        }
+        //private bool StartsWithA(string arg)
+        //{
+        //    return arg.StartsWith("A");
+        //}
     }
 }
