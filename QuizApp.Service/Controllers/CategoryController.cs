@@ -1,4 +1,5 @@
 ﻿using QuizApp.Interfaces.CategoryService;
+using QuizApp.Service.HelperClass;
 using QuizApp.Service.Models;
 using QuizApp.Service.Models.Request;
 using QuizApp.Service.Models.Response;
@@ -20,14 +21,60 @@ namespace QuizApp.Service.Controllers
             _categoryService = categoryService;
         }
 
-        public string GetAll()
+        public CategoryResponse GetAll([FromBody] CategoryRequest categoryRequest)
         {
-            return "ÇALIŞTI";
+            CategoryResponse response;
+            try
+            {
+                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
+                if (Authenticated != null)
+                {
+                    return Authenticated;
+                }
+
+                List<Category> _categories = _categoryService.GetAll();
+                return CreateResponse.ReturnResponse(_categories);
+            }
+            catch (Exception exception)
+            {
+
+                return response = new CategoryResponse()
+                {
+                    status = new Models.Attribute.Status()
+                    {
+                        Code = (int)Enums.MessageCode.Error,
+                        Message = Enums.MessageCode.Error.ToString() + exception.Message
+                    }
+                };
+            }
         }
 
-        public Category GetCategory(int _id)
+        public CategoryResponse GetCategoryById([FromBody] CategoryRequest categoryRequest)
         {
-            return _categoryService.GetById(_id);
+            CategoryResponse response;
+            try
+            {
+                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
+                if (Authenticated != null)
+                {
+                    return Authenticated;
+                }
+
+                Category _category = _categoryService.GetById(categoryRequest.Category.Id);
+                return CreateResponse.ReturnResponse(_category);
+            }
+            catch (Exception exception)
+            {
+
+                return response = new CategoryResponse()
+                {
+                    status = new Models.Attribute.Status()
+                    {
+                        Code = (int)Enums.MessageCode.Error,
+                        Message = Enums.MessageCode.Error.ToString() + exception.Message
+                    }
+                };
+            }
         }
 
         [HttpPost]
@@ -36,16 +83,10 @@ namespace QuizApp.Service.Controllers
             CategoryResponse response;
             try
             {
-                if (categoryRequest.Authentication.Email != "admin@gmail.com" || categoryRequest.Authentication.Password != "123123")
+                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
+                if (Authenticated != null)
                 {
-                    response = new CategoryResponse()
-                    {
-                        Status = new Models.Attribute.Status()
-                        {
-                            Code = (int)Enums.MessageCode.LoginError,
-                            Message = Enums.MessageCode.LoginError.ToString()
-                        }
-                    };
+                    return Authenticated;
                 }
 
                 bool isAdded = _categoryService.AddOrUpdate(new Category()
@@ -60,19 +101,18 @@ namespace QuizApp.Service.Controllers
                 {
                     return response = new CategoryResponse()
                     {
-                        Status = new Models.Attribute.Status()
+                        status = new Models.Attribute.Status()
                         {
                             Code = (int)Enums.MessageCode.Successful,
                             Message = Enums.MessageCode.Successful.ToString()
                         },
-                        CategoryId = 1
                     };
                 }
                 else
                 {
                     return response = new CategoryResponse()
                     {
-                        Status = new Models.Attribute.Status()
+                        status = new Models.Attribute.Status()
                         {
                             Code = (int)Enums.MessageCode.Error,
                             Message = Enums.MessageCode.Error.ToString()
@@ -84,10 +124,10 @@ namespace QuizApp.Service.Controllers
             {
                 return response = new CategoryResponse()
                 {
-                    Status = new Models.Attribute.Status()
+                    status = new Models.Attribute.Status()
                     {
                         Code = (int)Enums.MessageCode.Error,
-                        Message = Enums.MessageCode.Error.ToString()+exception.Message
+                        Message = Enums.MessageCode.Error.ToString() + exception.Message
                     }
                 };
             }

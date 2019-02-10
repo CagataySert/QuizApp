@@ -162,6 +162,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HelperClass\Authentication.cs" />
+    <Compile Include="HelperClass\CreateResponse.cs" />
     <Compile Include="Models\Attribute\Authentication.cs" />
     <Compile Include="Models\Attribute\Status.cs" />
     <Compile Include="Models\Enums.cs" />
