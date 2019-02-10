@@ -38,6 +38,10 @@ namespace QuizApp.DAL.Concrete.EntityFramework
         public bool DeleteQuestion(int _id)
         {
             Question willBeDeletedEntity = context.Questions.Where(s => s.Id == _id).FirstOrDefault();
+            if (willBeDeletedEntity == null)
+            {
+                return false;
+            }
             context.Questions.Remove(willBeDeletedEntity);
             return context.SaveChanges() > 0 ? true : false;
         }
@@ -82,6 +86,10 @@ namespace QuizApp.DAL.Concrete.EntityFramework
                     }
                 ).FirstOrDefault();
 
+            if (dbModel == null)
+            {
+                return null;
+            }
             QuestionWithAnswers questionWithAnswers = new QuestionWithAnswers();
             questionWithAnswers.AnswerNames = dbModel.answerNames;
             questionWithAnswers.AnswerIds = dbModel.answerIds;

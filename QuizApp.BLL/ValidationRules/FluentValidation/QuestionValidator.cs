@@ -15,7 +15,7 @@ namespace QuizApp.BLL.ValidationRules.FluentValidation
             RuleFor(q => q.Id).NotEmpty();
             RuleFor(q => q.Name).NotEmpty();
             RuleFor(q => q.CategoryId).NotEmpty();
-            RuleFor(q => q.Answers).NotEmpty();
+            //RuleFor(q => q.Answers).NotEmpty();
         }
     }
 }

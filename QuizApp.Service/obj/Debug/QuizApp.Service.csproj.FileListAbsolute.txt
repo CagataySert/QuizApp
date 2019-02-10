@@ -99,8 +99,6 @@ C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.CodeDom.Provide
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\FluentValidation.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\EntityFramework.xml
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\tr\System.Web.Optimization.resources.dll
-C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\tr\System.Net.Http.Formatting.resources.dll
-C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\tr\System.Web.Http.resources.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\tr\System.Web.Http.WebHost.resources.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\obj\Debug\QuizApp.Service.csprojAssemblyReference.cache
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\obj\Debug\QuizApp.Service.csproj.CoreCompileInputs.cache
@@ -110,3 +108,14 @@ C:\Users\user\source\repos\QuizApp\QuizApp.Service\obj\Debug\QuizApp.Service.pdb
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\WebActivatorEx.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\EntityFramework.SqlServer.dll
 C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Security.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Owin.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\System.Web.Http.Owin.dll
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Security.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\user\source\repos\QuizApp\QuizApp.Service\bin\System.Web.Http.Owin.xml
