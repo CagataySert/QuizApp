@@ -1,8 +1,4 @@
 ﻿using QuizApp.Interfaces.CategoryService;
-using QuizApp.Service.HelperClass;
-using QuizApp.Service.Models;
-using QuizApp.Service.Models.Request;
-using QuizApp.Service.Models.Response;
 using QuizzApp.Entities.Entities;
 using System;
 using System.Collections.Generic;
@@ -13,123 +9,73 @@ using System.Web.Http;
 
 namespace QuizApp.Service.Controllers
 {
+    [Authorize]
     public class CategoryController : ApiController
     {
-        private readonly ICategoryService _categoryService;
+        ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
 
-        public CategoryResponse GetAll([FromBody] CategoryRequest categoryRequest)
+        public IHttpActionResult GetAll()
         {
-            CategoryResponse response;
-            try
-            {
-                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
-                if (Authenticated != null)
-                {
-                    return Authenticated;
-                }
-
-                List<Category> _categories = _categoryService.GetAll();
-                return CreateResponse.ReturnResponse(_categories);
-            }
-            catch (Exception exception)
-            {
-
-                return response = new CategoryResponse()
-                {
-                    status = new Models.Attribute.Status()
-                    {
-                        Code = (int)Enums.MessageCode.Error,
-                        Message = Enums.MessageCode.Error.ToString() + exception.Message
-                    }
-                };
-            }
+            List<Category> categories = _categoryService.GetAll();
+            return Ok(categories);
         }
 
-        public CategoryResponse GetCategoryById([FromBody] CategoryRequest categoryRequest)
+        public IHttpActionResult GetById(int _id)
         {
-            CategoryResponse response;
-            try
+            Category category = _categoryService.GetById(_id);
+            if (category == null)
             {
-                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
-                if (Authenticated != null)
-                {
-                    return Authenticated;
-                }
-
-                Category _category = _categoryService.GetById(categoryRequest.Category.Id);
-                return CreateResponse.ReturnResponse(_category);
+                return BadRequest("The entity could not be found by id");
             }
-            catch (Exception exception)
+            else
             {
-
-                return response = new CategoryResponse()
-                {
-                    status = new Models.Attribute.Status()
-                    {
-                        Code = (int)Enums.MessageCode.Error,
-                        Message = Enums.MessageCode.Error.ToString() + exception.Message
-                    }
-                };
+                return Ok(category);
             }
         }
 
         [HttpPost]
-        public CategoryResponse AddCategory([FromBody] CategoryRequest categoryRequest)
+        public IHttpActionResult AddCategory([FromBody]Category entity)
         {
-            CategoryResponse response;
-            try
+            bool isAdded = _categoryService.AddOrUpdate(entity);
+            if (isAdded)
             {
-                CategoryResponse Authenticated = Authentication.CheckAuthentication(categoryRequest.Authentication.Email, categoryRequest.Authentication.Password);
-                if (Authenticated != null)
-                {
-                    return Authenticated;
-                }
-
-                bool isAdded = _categoryService.AddOrUpdate(new Category()
-                {
-                    Id = categoryRequest.Category.Id,
-                    Level = categoryRequest.Category.Level,
-                    Name = categoryRequest.Category.Name,
-                    Questions = categoryRequest.Category.Questions
-                });
-
-                if (isAdded)
-                {
-                    return response = new CategoryResponse()
-                    {
-                        status = new Models.Attribute.Status()
-                        {
-                            Code = (int)Enums.MessageCode.Successful,
-                            Message = Enums.MessageCode.Successful.ToString()
-                        },
-                    };
-                }
-                else
-                {
-                    return response = new CategoryResponse()
-                    {
-                        status = new Models.Attribute.Status()
-                        {
-                            Code = (int)Enums.MessageCode.Error,
-                            Message = Enums.MessageCode.Error.ToString()
-                        }
-                    };
-                }
+                return Ok();
             }
-            catch (Exception exception)
+            else
             {
-                return response = new CategoryResponse()
-                {
-                    status = new Models.Attribute.Status()
-                    {
-                        Code = (int)Enums.MessageCode.Error,
-                        Message = Enums.MessageCode.Error.ToString() + exception.Message
-                    }
-                };
+                return BadRequest();
+            }
+        }
+
+        [HttpPut]
+        public IHttpActionResult UpdateCategory([FromBody]Category entity)
+        {
+            bool isUpdated = _categoryService.AddOrUpdate(entity);
+            if (isUpdated)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeletedCategory(int _id)
+        {
+            bool isDeleted = _categoryService.Delete(_id);
+            if (isDeleted)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
             }
         }
     }
