@@ -72,46 +72,69 @@ namespace QuizApp.DAL.Concrete.EntityFramework
             return context.SaveChanges() > 0 ? true : false;
         }
 
+        //public QuestionWithAnswers GetQuestionWithAnswersById(int _id)
+        //{
+        //    var dbModel = context.Questions
+        //        .Where(question => question.Id == _id)
+        //        .Select(question => new
+        //            {
+        //                answerNames = question.Answers.Select(a => a.Name).ToList(),
+        //                answerIds = question.Answers.Select(a => a.Id).ToList(),
+        //                answerTypes = question.Answers.Select(a => a.IsTrue).ToList(),
+        //                questionId = question.Id,
+        //                questionName = question.Name
+        //            }
+        //        ).FirstOrDefault();
+
+        //    if (dbModel == null)
+        //    {
+        //        return null;
+        //    }
+        //    QuestionWithAnswers questionWithAnswers = new QuestionWithAnswers();
+        //    questionWithAnswers.AnswerNames = dbModel.answerNames;
+        //    questionWithAnswers.AnswerIds = dbModel.answerIds;
+        //    questionWithAnswers.AnswerType = dbModel.answerTypes;
+        //    questionWithAnswers.QuestionId = dbModel.questionId;
+        //    questionWithAnswers.QuestionName = dbModel.questionName;
+
+        //    return questionWithAnswers;
+        //    // If you do not have navigation properties, then u can use Join method!!!
+
+        //    //var questionWithAnswer = context.Questions
+        //    //    .Join(
+        //    //        context.Answers,
+        //    //        question => question.Id,
+        //    //        answer => answer.QuestionId,
+        //    //        (question, answer) => new
+        //    //        {
+        //    //            question.Id,
+        //    //            question.Name,
+        //    //            answerN = answer.Name
+        //    //        }
+        //    //    ).Where(s => s.Id == _id).ToList();
+        //}
+
         public QuestionWithAnswers GetQuestionWithAnswersById(int _id)
         {
-            var dbModel = context.Questions
-                .Where(question => question.Id == _id)
-                .Select(question => new
-                    {
-                        answerNames = question.Answers.Select(a => a.Name).ToList(),
-                        answerIds = question.Answers.Select(a => a.Id).ToList(),
-                        answerTypes = question.Answers.Select(a => a.IsTrue).ToList(),
-                        questionId = question.Id,
-                        questionName = question.Name
-                    }
-                ).FirstOrDefault();
+            Answer answer = context.Answers
+                    .Where(a => a.Id == _id)
+                    .FirstOrDefault();
 
+            var dbModel = context.Questions
+                .Where(q => q.Id == answer.QuestionId)
+                .Select(question => new QuestionWithAnswers()
+                {
+                    AnswerNames = question.Answers.Select(a => a.Name).ToList(),
+                    AnswerIds = question.Answers.Select(a => a.Id).ToList(),
+                    AnswerType = question.Answers.Select(a => a.IsTrue).ToList(),
+                    QuestionId = question.Id,
+                    QuestionName = question.Name
+                }).FirstOrDefault();
             if (dbModel == null)
             {
                 return null;
             }
-            QuestionWithAnswers questionWithAnswers = new QuestionWithAnswers();
-            questionWithAnswers.AnswerNames = dbModel.answerNames;
-            questionWithAnswers.AnswerIds = dbModel.answerIds;
-            questionWithAnswers.AnswerType = dbModel.answerTypes;
-            questionWithAnswers.QuestionId = dbModel.questionId;
-            questionWithAnswers.QuestionName = dbModel.questionName;
-
-            return questionWithAnswers;
-            // If you do not have navigation properties, then u can use Join method!!!
-
-            //var questionWithAnswer = context.Questions
-            //    .Join(
-            //        context.Answers,
-            //        question => question.Id,
-            //        answer => answer.QuestionId,
-            //        (question, answer) => new
-            //        {
-            //            question.Id,
-            //            question.Name,
-            //            answerN = answer.Name
-            //        }
-            //    ).Where(s => s.Id == _id).ToList();
+            return dbModel;
         }
 
         public List<QuestionWithAnswers> GetAllQuestionWithAnswersByCategoryId(int _categoryId)

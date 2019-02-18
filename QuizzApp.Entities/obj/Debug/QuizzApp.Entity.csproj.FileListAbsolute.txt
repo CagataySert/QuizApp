@@ -3,3 +3,4 @@ C:\Users\user\source\repos\QuizApp\QuizzApp.Entities\bin\Debug\QuizzApp.Entities
 C:\Users\user\source\repos\QuizApp\QuizzApp.Entities\obj\Debug\QuizzApp.Entity.csproj.CoreCompileInputs.cache
 C:\Users\user\source\repos\QuizApp\QuizzApp.Entities\obj\Debug\QuizzApp.Entities.dll
 C:\Users\user\source\repos\QuizApp\QuizzApp.Entities\obj\Debug\QuizzApp.Entities.pdb
+C:\Users\user\source\repos\QuizApp\QuizzApp.Entities\obj\Debug\QuizzApp.Entity.csprojAssemblyReference.cache
